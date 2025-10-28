@@ -7,13 +7,13 @@
 <body>
 <h1>Категории</h1>
 {% for c in categories %}
-{{ c }}
+<a href="/category/{{ c.id }}">{{ c }}</a>
 <br>
 {% endfor %}
 <hr>
 <h1>Товары</h1>
 {% for p in products %}
-{{ p }}
+<a href="/product/{{ p.id }}">{{ p }}</a>
 <br>
 {% endfor %}
 </body>
