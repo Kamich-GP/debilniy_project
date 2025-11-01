@@ -15,13 +15,21 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
             </ul>
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+            <form action="/search" method="post" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                {% csrf_token %}
+                <input name="search_product" type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
             </form>
+            {% if user.is_authenticated %}
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Войти</button>
-                <button type="button" class="btn btn-warning">Регистрация</button>
+                <a href="/cart" class="btn btn-primary" role="button">Корзина</a>
+                <a href="/logout" class="btn btn-danger" role="button">Выйти</a>
             </div>
+            {% else %}
+            <div class="text-end">
+                <a href="/register" class="btn btn-warning" role="button">Регистрация</a>
+                <a href="{% url 'login' %}" class="btn btn-primary" role="button">Войти</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </header>
@@ -35,7 +43,7 @@
             <div class="feature col">
                 <img src="{{ p.product_photo.url }}" width="350" height="350" alt="">
                 <h3 class="fs-2 text-white">{{ p }}</h3>
-                <p class="text-white">{{ p.product_des }}</p>
+                <p class="text-white">{{ p.product_des | slice:64 }}...</p>
                 <a href="/product/{{ p.id }}">Подробнее -></a>
             </div>
             {% endfor %}
