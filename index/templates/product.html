@@ -50,7 +50,7 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <form action="/add-to-cart/{{ product.id }}" method="post">
                     {% csrf_token %}
-                    <input type="number" min="1" class="form-control w-25 me-1" name="pr_amount" required>
+                    <input type="number" min="1" class="form-control w-25 me-1" name="pr_amount" value="1" required>
                     <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2">Добавить в корзину</button>
                     <button type="button" class="btn btn-outline-secondary btn-lg px-4">${{ product.product_price }}</button>
                 </form>
