@@ -1,3 +1,4 @@
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -60,6 +61,9 @@
             <label for="password2" class="form-label">Подтвердите пароль</label>
             <input type="password" name="password2" id="password2" class="form-control bg-dark text-white border-secondary" required>
         </div>
+        <a href="{% provider_login_url 'google' process='login' %}" class="btn w-100 mb-2" role="button" style="background-color: orange; color:white;">
+            Войти через Google
+        </a>
         <button type="submit" class="btn btn-primary w-100">Войти</button>
     </form>
 </div>
